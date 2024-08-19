@@ -1,0 +1,29 @@
+const http = require('http');
+const server = http.createServer((req, res) => {
+const { method, url } = req;
+res.setHeader('Content-Type', 'text/plain');
+if (method === 'GET' && url === '/') {
+res.writeHead(200);
+res.end('Hello, this is a GET request!');
+} else if (method === 'POST' && url === '/') {
+res.writeHead(200);
+res.end('Received a POST request');
+} else if (method === 'PUT' && url === '/') {
+res.writeHead(200);
+res.end('Received a PUT request');
+} else if (method === 'DELETE' && url === '/') {
+res.writeHead(200);
+res.end('Received a DELETE request');
+} else if (method === 'GET' && url === '/about') {
+res.writeHead(200);
+res.end('This is the about page.');
+} else if (method === 'GET' && url === '/contact') {
+res.writeHead(200);
+res.end('This is the contact page.');
+} else {
+res.writeHead(404);
+res.end('Not Found');
+}});
+server.listen(3000, () => {
+console.log('Server is running on port 3000');
+});
